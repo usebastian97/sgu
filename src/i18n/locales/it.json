@@ -9,11 +9,11 @@
   "home": {
     "hero": {
       "title": "Ciao, sono Sebastian",
-      "subtitle": "Architetto Cloud | AI | DevOps | Specialista Azure",
+      "subtitle": "Azure | AI | Sicurezza | IaC",
       "description": "Sono un professionista IT e appassionato di open-source in transizione verso una carriera di Cloud Architect con focus su Microsoft Azure, AI e Cloud Security.",
       "cta": {
-        "primary": "Vedi tutorial",
-        "secondary": "Leggi blog"
+        "primary": "Vedi progetti",
+        "secondary": "Scarica CV"
       }
     },
     "about_preview": "Chi sono",

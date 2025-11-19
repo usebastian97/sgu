@@ -9,11 +9,11 @@
   "home": {
     "hero": {
       "title": "こんにちは、Sebastianです",
-      "subtitle": "クラウドアーキテクト | AI | DevOps | Azure スペシャリスト",
+      "subtitle": "Azure | AI | セキュリティ | IaC",
       "description": "IT専門家でありオープンソース愛好家として、Microsoft Azure、AI、クラウドセキュリティに焦点を当てたクラウドアーキテクトへのキャリアに転身しています。",
       "cta": {
-        "primary": "チュートリアルを見る",
-        "secondary": "ブログを読む"
+        "primary": "プロジェクトを見る",
+        "secondary": "履歴書をダウンロード"
       }
     },
     "about_preview": "私について",

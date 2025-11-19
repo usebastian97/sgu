@@ -10,7 +10,7 @@ const blog = defineCollection({
     tags: z.array(z.string()).default([]),
     image: z.string().optional(),
     draft: z.boolean().default(false),
-    lang: z.enum(['en', 'de', 'fr', 'ro', 'it']).default('en'),
+    lang: z.enum(['en', 'de', 'fr', 'it', 'nl', 'ch', 'jp', 'es', 'pt', 'pt-br']).default('en'),
   }),
 });
 
@@ -26,7 +26,7 @@ const projects = defineCollection({
     githubUrl: z.string().url().optional(),
     featured: z.boolean().default(false),
     order: z.number().default(0),
-    lang: z.enum(['en', 'de', 'fr', 'ro', 'it']).default('en'),
+    lang: z.enum(['en', 'de', 'fr', 'it', 'nl', 'ch', 'jp', 'es', 'pt', 'pt-br']).default('en'),
   }),
 });
 

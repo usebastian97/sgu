@@ -7,19 +7,20 @@ import ExperienceTimeline from './about/components/ExperienceTimeline.astro';
 import Certifications from './about/components/Certifications.astro';
 import { useTranslations } from '@i18n/utils';
 
-const t = useTranslations('en');
+const lang = 'en';
+const t = useTranslations(lang);
 ---
 
-<MainLayout title={`${t('about.title')} | Sebastian Georgian Utoiu`}>
-  <AboutHero />
+<MainLayout title={`${t('about.title')} | Sebastian Georgian Utoiu`} lang={lang}>
+  <AboutHero lang={lang} />
 
   <!-- Main Content -->
   <section class="bg-white py-16 dark:bg-black">
     <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-      <ProfessionalSummary />
-      <SkillsGrid />
-      <ExperienceTimeline />
-      <Certifications />
+      <ProfessionalSummary lang={lang} />
+      <SkillsGrid lang={lang} />
+      <ExperienceTimeline lang={lang} />
+      <Certifications lang={lang} />
     </div>
   </section>
 </MainLayout>

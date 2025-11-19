@@ -5,17 +5,18 @@ import ContactForm from './contact/components/ContactForm.astro';
 import ContactInfo from './contact/components/ContactInfo.astro';
 import { useTranslations } from '@i18n/utils';
 
-const t = useTranslations('en');
+const lang = 'en';
+const t = useTranslations(lang);
 ---
 
-<MainLayout title={`${t('contact.title')} | Sebastian Georgian Utoiu`}>
+<MainLayout title={`${t('contact.title')} | Sebastian Georgian Utoiu`} lang={lang}>
   <section class="bg-white py-20 dark:bg-black">
     <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-      <ContactHero />
+      <ContactHero lang={lang} />
 
       <div class="grid gap-12 lg:grid-cols-2">
-        <ContactForm />
-        <ContactInfo />
+        <ContactForm lang={lang} />
+        <ContactInfo lang={lang} />
       </div>
     </div>
   </section>

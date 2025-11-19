@@ -26,7 +26,7 @@ export default defineConfig({
   },
   i18n: {
     defaultLocale: 'en',
-    locales: ['en', 'de', 'fr', 'ro', 'it'],
+    locales: ['en', 'de', 'fr', 'it', 'nl', 'ch', 'jp', 'es', 'pt', 'pt-br'],
     routing: {
       prefixDefaultLocale: false,
     },
@@ -50,8 +50,13 @@ export default defineConfig({
           en: 'en',
           de: 'de',
           fr: 'fr',
-          ro: 'ro',
           it: 'it',
+          nl: 'nl',
+          ch: 'zh-Hans',
+          jp: 'ja',
+          es: 'es',
+          pt: 'pt',
+          'pt-br': 'pt-BR',
         },
       },
     }),

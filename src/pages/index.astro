@@ -5,13 +5,15 @@ import FeaturedProjects from './home/components/FeaturedProjects.astro';
 import TechnologyStack from './home/components/TechnologyStack.astro';
 import LatestBlogPosts from './home/components/LatestBlogPosts.astro';
 import CTASection from './home/components/CTASection.astro';
+
+const lang = 'en';
 ---
 
-<MainLayout>
-  <HeroSection />
-  <FeaturedProjects />
-  <TechnologyStack />
-  <LatestBlogPosts />
-  <CTASection />
+<MainLayout lang={lang}>
+  <HeroSection lang={lang} />
+  <FeaturedProjects lang={lang} />
+  <TechnologyStack lang={lang} />
+  <LatestBlogPosts lang={lang} />
+  <CTASection lang={lang} />
 </MainLayout>
 

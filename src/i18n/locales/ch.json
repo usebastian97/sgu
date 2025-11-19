@@ -9,11 +9,11 @@
   "home": {
     "hero": {
       "title": "你好，我是Sebastian",
-      "subtitle": "云架构师 | 人工智能 | DevOps | Azure专家",
+      "subtitle": "Azure | 人工智能 | 安全 | IaC",
       "description": "我是一名IT专业人士和开源爱好者，正在转型成为专注于Microsoft Azure、人工智能和云安全的云架构师。",
       "cta": {
-        "primary": "查看教程",
-        "secondary": "阅读博客"
+        "primary": "查看项目",
+        "secondary": "下载简历"
       }
     },
     "about_preview": "关于我",

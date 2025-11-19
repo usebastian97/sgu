@@ -10,12 +10,13 @@ interface Props {
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 
+const basePath = lang === 'en' ? '' : `/${lang}`;
 const navItems = [
-  { href: '/', label: t('nav.home') },
-  { href: '/about', label: t('nav.about') },
-  { href: '/projects', label: t('nav.projects') },
-  { href: '/blog', label: t('nav.blog') },
-  { href: '/contact', label: t('nav.contact') },
+  { href: `${basePath}/`, label: t('nav.home') },
+  { href: `${basePath}/about`, label: t('nav.about') },
+  { href: `${basePath}/projects`, label: t('nav.projects') },
+  { href: `${basePath}/blog`, label: t('nav.blog') },
+  { href: `${basePath}/contact`, label: t('nav.contact') },
 ];
 ---
 
@@ -85,10 +86,25 @@ const navItems = [
 </header>
 
 <script>
-  const mobileMenuButton = document.getElementById('mobile-menu-button');
-  const mobileMenu = document.getElementById('mobile-menu');
+  function initMobileMenu() {
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
 
-  mobileMenuButton?.addEventListener('click', () => {
-    mobileMenu?.classList.toggle('hidden');
-  });
+    if (!mobileMenuButton || !mobileMenu) return;
+
+    // Remove existing listeners by cloning
+    const newButton = mobileMenuButton.cloneNode(true) as HTMLElement;
+    mobileMenuButton.parentNode?.replaceChild(newButton, mobileMenuButton);
+
+    const button = document.getElementById('mobile-menu-button');
+    button?.addEventListener('click', () => {
+      mobileMenu?.classList.toggle('hidden');
+    });
+  }
+
+  // Initialize on page load
+  initMobileMenu();
+
+  // Reinitialize after view transitions
+  document.addEventListener('astro:page-load', initMobileMenu);
 </script>

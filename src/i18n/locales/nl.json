@@ -9,11 +9,11 @@
   "home": {
     "hero": {
       "title": "Hallo, ik ben Sebastian",
-      "subtitle": "Cloud Architect | AI | DevOps | Azure Specialist",
+      "subtitle": "Azure | AI | Beveiliging | IaC",
       "description": "Ik ben een IT-professional en open-source enthusiast die overschakelt naar een carrière als Cloud Architect met focus op Microsoft Azure, AI en Cloud Security.",
       "cta": {
-        "primary": "Bekijk Tutorials",
-        "secondary": "Lees Blog"
+        "primary": "Bekijk Projecten",
+        "secondary": "Download CV"
       }
     },
     "about_preview": "Over mij",
