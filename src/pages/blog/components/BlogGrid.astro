@@ -37,7 +37,7 @@ const totalPages = Math.ceil(posts.length / postsPerPage);
       {Array.from({ length: totalPages }, (_, i) => (
         <a
           href={i === 0 ? '/blog' : `/blog/${i + 1}`}
-          class="rounded-lg border border-gray-300 px-4 py-2 transition-colors hover:border-blue-600 hover:text-blue-600 dark:border-gray-700"
+          class="rounded-lg border border-gray-300 px-4 py-2 transition-colors hover:border-blue-600 hover:text-blue-600"
         >
           {i + 1}
         </a>

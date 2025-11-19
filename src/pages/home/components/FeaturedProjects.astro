@@ -13,11 +13,11 @@ const allProjects = await getCollection('projects', ({ data }) => {
 const featuredProjects = allProjects.sort((a, b) => a.data.order - b.data.order).slice(0, 3);
 ---
 
-<section class="bg-white py-24 dark:bg-black">
+<section class="bg-white py-24">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="mb-12 text-center">
       <h2 class="mb-4 text-3xl font-bold sm:text-4xl">{t('home.featured_projects')}</h2>
-      <p class="text-lg text-gray-600 dark:text-gray-400">
+      <p class="text-lg text-gray-600">
         Selected highlights from my portfolio
       </p>
     </div>

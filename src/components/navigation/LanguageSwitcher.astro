@@ -28,7 +28,7 @@ if (currentPath !== '/' && currentPath.startsWith('/')) {
 <div class="relative">
   <button
     id="language-button"
-    class="flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium transition-colors hover:bg-gray-100 dark:hover:bg-gray-800"
+    class="flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium transition-colors hover:bg-gray-100"
     aria-label="Select language"
   >
     <span class="uppercase">{currentLang}</span>
@@ -40,7 +40,7 @@ if (currentPath !== '/' && currentPath.startsWith('/')) {
 
   <div
     id="language-menu"
-    class="absolute right-0 mt-2 hidden w-48 rounded-lg border border-gray-200 bg-white py-2 shadow-lg dark:border-gray-800 dark:bg-black"
+    class="absolute right-0 mt-2 hidden w-48 rounded-lg border border-gray-200 bg-white py-2 shadow-lg"
   >
     {
       Object.entries(languages).map(([code, name]) => {
@@ -50,7 +50,7 @@ if (currentPath !== '/' && currentPath.startsWith('/')) {
           <a
             href={href}
             class:list={[
-              'block px-4 py-2 text-sm transition-colors hover:bg-gray-100 dark:hover:bg-gray-800',
+              'block px-4 py-2 text-sm transition-colors hover:bg-gray-100',
               { 'font-bold text-blue-600': code === currentLang },
             ]}
           >

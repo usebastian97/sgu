@@ -10,7 +10,7 @@ const categories = ['all', 'cloud', 'ai', 'fullstack', 'tools'] as const;
   {
     categories.map((category) => (
       <button
-        class="filter-btn rounded-lg border-2 border-gray-300 px-4 py-2 font-medium transition-all hover:border-blue-600 hover:text-blue-600 dark:border-gray-700"
+        class="filter-btn rounded-lg border-2 border-gray-300 px-4 py-2 font-medium transition-all hover:border-blue-600 hover:text-blue-600"
         data-category={category}
       >
         {category === 'all' ? t('projects.filter_all') : t(`projects.filter_${category}`)}
@@ -30,9 +30,9 @@ const categories = ['all', 'cloud', 'ai', 'fullstack', 'tools'] as const;
       // Update active button
       filterButtons.forEach((btn) => {
         btn.classList.remove('border-blue-600', 'bg-blue-600', 'text-white');
-        btn.classList.add('border-gray-300', 'dark:border-gray-700');
+        btn.classList.add('border-gray-300');
       });
-      button.classList.remove('border-gray-300', 'dark:border-gray-700');
+      button.classList.remove('border-gray-300');
       button.classList.add('border-blue-600', 'bg-blue-600', 'text-white');
 
       // Filter projects

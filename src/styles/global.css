@@ -66,12 +66,6 @@
     --color-border: 229 231 235;
   }
 
-  .dark {
-    --color-bg: 0 0 0;
-    --color-text: 255 255 255;
-    --color-border: 38 38 38;
-  }
-
   * {
     @apply border-[rgb(var(--color-border))];
   }
@@ -135,23 +129,6 @@
     @apply bg-gray-800 text-white border-gray-800;
   }
 
-  /* Dark mode button styles */
-  .dark .btn-primary {
-    @apply bg-white text-black border-white;
-  }
-
-  .dark .btn-primary:hover {
-    @apply bg-black text-white border-white;
-  }
-
-  .dark .btn-outline {
-    @apply bg-black text-white border-white;
-  }
-
-  .dark .btn-outline:hover {
-    @apply bg-white text-black border-white;
-  }
-
   /* Link hover states */
   a {
     @apply transition-colors duration-200;
@@ -159,9 +136,5 @@
 
   a:hover {
     @apply text-black;
-  }
-
-  .dark a:hover {
-    @apply text-white;
   }
 }
