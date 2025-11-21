@@ -59,7 +59,9 @@
     "filter_cloud": "Cloud",
     "filter_ai": "AI",
     "filter_fullstack": "Full-stack",
-    "filter_tools": "Tools"
+    "filter_tools": "Tools",
+    "technologies": "Technologies",
+    "viewDetails": "View Details"
   },
   "blog": {
     "title": "Blog",

@@ -1,7 +1,9 @@
 ---
-import Card from '@components/cards/Card.astro';
 import EmptyState from '@components/ui/EmptyState.astro';
 import { getCollection } from 'astro:content';
+import { useTranslations } from '@i18n/utils';
+
+const t = useTranslations('en');
 
 const allProjects = await getCollection('projects');
 
@@ -18,18 +20,69 @@ const projects = allProjects.sort((a, b) => a.data.order - b.data.order);
   />
 ) : (
   <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3" id="projects-grid">
-    {
-      projects.map((project) => (
-        <div class="project-card" data-category={project.data.category}>
-          <Card
-            title={project.data.title}
-            description={project.data.description}
-            href={`/projects/${project.slug}`}
-            image={project.data.image ?? ''}
-            tags={project.data.tags}
-          />
+    {projects.map((project) => (
+      <div class="project-card group flex flex-col rounded-lg border border-gray-200 bg-white transition-all duration-200 hover:border-gray-900 hover:shadow-lg" data-category={project.data.category}>
+        <!-- Project Image -->
+        {project.data.image && (
+          <div class="aspect-video overflow-hidden rounded-t-lg">
+            <img
+              src={project.data.image}
+              alt={project.data.title}
+              class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+              loading="lazy"
+            />
+          </div>
+        )}
+
+        <div class="flex flex-col flex-grow p-6 sm:p-8">
+          <!-- Category Badge -->
+          <div class="mb-4">
+            <span class="inline-block rounded-full bg-gray-100 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-gray-800 group-hover:bg-gray-900 group-hover:text-white transition-colors">
+              {project.data.category}
+            </span>
+          </div>
+
+          <!-- Title -->
+          <h3 class="mb-4 text-xl font-bold text-gray-900 sm:text-2xl">
+            {project.data.title}
+          </h3>
+
+          <!-- Description -->
+          <p class="mb-6 text-sm text-gray-600 leading-relaxed">
+            {project.data.description}
+          </p>
+
+          <!-- View Details Button -->
+          <div class="mt-auto pt-4">
+            <a
+              href={`/projects/${project.slug}`}
+              class="inline-flex w-full items-center justify-center gap-2 rounded-lg border-2 border-gray-900 px-4 py-2 text-sm font-medium text-gray-900 transition-all hover:bg-gray-900 hover:text-white"
+            >
+              {t('projects.viewDetails')}
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
         </div>
-      ))
-    }
+      </div>
+    ))}
   </div>
 )}
+
+<style>
+  .project-card {
+    animation: slideUp 0.3s ease-out;
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
