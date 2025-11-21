@@ -9,10 +9,38 @@ interface Props {
 }
 
 const { title, description, href, image, tags = [], date } = Astro.props;
+
+// Function to get tag color based on tag name
+const getTagColor = (tag: string) => {
+  const tagLower = tag.toLowerCase();
+  
+  // Cloud/Infrastructure tags - Blue
+  if (tagLower.includes('cloud') || tagLower.includes('azure') || tagLower.includes('aws') || tagLower.includes('gcp')) {
+    return 'bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400';
+  }
+  // AI/ML tags - Purple
+  if (tagLower.includes('ai') || tagLower.includes('ml') || tagLower.includes('machine learning')) {
+    return 'bg-purple-50 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400';
+  }
+  // DevOps/CI/CD tags - Green
+  if (tagLower.includes('devops') || tagLower.includes('ci/cd') || tagLower.includes('automation') || tagLower.includes('terraform')) {
+    return 'bg-green-50 text-green-600 dark:bg-green-900/30 dark:text-green-400';
+  }
+  // Security tags - Red
+  if (tagLower.includes('security') || tagLower.includes('kubernetes')) {
+    return 'bg-red-50 text-red-600 dark:bg-red-900/30 dark:text-red-400';
+  }
+  // Architecture/Design tags - Orange
+  if (tagLower.includes('architecture') || tagLower.includes('design') || tagLower.includes('scalability')) {
+    return 'bg-orange-50 text-orange-600 dark:bg-orange-900/30 dark:text-orange-400';
+  }
+  // Default - Gray
+  return 'bg-gray-50 text-gray-600 dark:bg-gray-900/30 dark:text-gray-400';
+};
 ---
 
 <article
-  class="group relative overflow-hidden rounded-xl border border-gray-200 bg-white transition-all duration-300 hover:shadow-xl"
+  class="group relative overflow-hidden rounded-xl border border-gray-200 bg-white transition-all duration-300 hover:shadow-xl dark:border-gray-700 dark:bg-gray-800"
 >
   {
     image && (
@@ -29,32 +57,10 @@ const { title, description, href, image, tags = [], date } = Astro.props;
 
   <div class="p-6">
     {
-      date && (
-        <time class="text-sm text-gray-600">
-          {new Intl.DateTimeFormat('en', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-          }).format(date)}
-        </time>
-      )
-    }
-
-    <h3 class="mt-2 text-xl font-bold transition-colors group-hover:text-blue-600">
-      <a href={href} class="after:absolute after:inset-0">
-        {title}
-      </a>
-    </h3>
-
-    <p class="mt-2 line-clamp-3 text-gray-600">
-      {description}
-    </p>
-
-    {
       tags.length > 0 && (
-        <div class="mt-4 flex flex-wrap gap-2">
-          {tags.map((tag) => (
-            <span class="rounded-full bg-gray-100 px-3 py-1 text-xs font-medium">
+        <div class="mb-3 flex flex-wrap gap-2">
+          {tags.slice(0, 2).map((tag) => (
+            <span class={`rounded-md px-2 py-1 text-xs font-medium ${getTagColor(tag)}`}>
               {tag}
             </span>
           ))}
@@ -62,11 +68,31 @@ const { title, description, href, image, tags = [], date } = Astro.props;
       )
     }
 
-    <div class="mt-4 flex items-center text-sm font-medium text-blue-600">
-      Read more
-      <svg class="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-      </svg>
-    </div>
+    <h3 class="text-xl font-bold transition-colors group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">
+      <a href={href} class="after:absolute after:inset-0">
+        {title}
+      </a>
+    </h3>
+
+    <p class="mt-3 line-clamp-3 text-gray-600 dark:text-gray-400">
+      {description}
+    </p>
+
+    {
+      date && (
+        <div class="mt-4 flex items-center justify-between border-t border-gray-100 pt-4 dark:border-gray-700">
+          <time class="text-sm text-gray-500 dark:text-gray-500">
+            {new Intl.DateTimeFormat('en', {
+              year: 'numeric',
+              month: 'short',
+              day: 'numeric',
+            }).format(date)}
+          </time>
+          <span class="text-sm font-medium text-blue-600 dark:text-blue-400">
+            Read more →
+          </span>
+        </div>
+      )
+    }
   </div>
 </article>

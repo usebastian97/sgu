@@ -26,7 +26,7 @@ const totalPages = Math.ceil(posts.length / postsPerPage);
 ) : (
   <>
     <!-- Posts Grid -->
-    <div class="mb-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+    <div class="mb-12 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
       {
         posts.slice(0, postsPerPage).map((post) => (
           <Card
@@ -34,8 +34,8 @@ const totalPages = Math.ceil(posts.length / postsPerPage);
             description={post.data.description}
             href={`/blog/${post.slug}`}
             image={post.data.image ?? ''}
-            tags={post.data.tags}
             date={post.data.publishDate}
+            tags={post.data.tags}
           />
         ))
       }
