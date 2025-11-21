@@ -20,7 +20,5 @@ export function slugify(text: string): string {
 }
 
 export function sortByDate<T extends { data: { publishDate: Date } }>(items: T[]): T[] {
-  return items.sort(
-    (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime()
-  );
+  return items.sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime());
 }

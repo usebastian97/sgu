@@ -3,40 +3,49 @@ import { Icon } from 'astro-icon/components';
 
 // Technology tabs data
 const techTabs = [
-    {
+  {
     id: 'programming',
     name: 'Programming',
     technologies: [
       { name: 'Python', icon: 'simple-icons:python', level: 'Basic' },
-      {name: 'Next.js', icon: 'simple-icons:nextdotjs', level: 'Intermediate' },
+      { name: 'Next.js', icon: 'simple-icons:nextdotjs', level: 'Intermediate' },
       { name: 'TypeScript', icon: 'simple-icons:typescript', level: 'Intermediate' },
       { name: 'JavaScript', icon: 'simple-icons:javascript', level: 'Intermediate' },
       { name: 'Kotlin', icon: 'simple-icons:kotlin', level: 'Intermediate' },
       { name: 'Bash', icon: 'simple-icons:gnubash', level: 'Basic' },
-    ]
+    ],
   },
   {
     id: 'cloud',
     name: 'Cloud & Infrastructure',
     technologies: [
       { name: 'Azure', icon: 'simple-icons:microsoftazure', level: 'Basic' },
-      {name: 'Azure Storage Services', icon: 'simple-icons:microsoftazure', level: 'Basic' },
+      { name: 'Azure Storage Services', icon: 'simple-icons:microsoftazure', level: 'Basic' },
       { name: 'Azure Networking Services', icon: 'simple-icons:microsoftazure', level: 'Basic' },
       { name: 'Azure Compute Services', icon: 'simple-icons:microsoftazure', level: 'Basic' },
       { name: 'Azure Management', icon: 'simple-icons:microsoftazure', level: 'Basic' },
       { name: 'Azure Governance', icon: 'simple-icons:microsoftazure', level: 'Basic' },
-    ]
+    ],
   },
   {
     id: 'containers',
     name: 'Containers & Orchestration',
     technologies: [
-      { name: 'Azure Kubernetes Services', icon: '/stacks/kubernetes-services.svg', level: 'Basic', },
+      {
+        name: 'Azure Kubernetes Services',
+        icon: '/stacks/kubernetes-services.svg',
+        level: 'Basic',
+      },
       { name: 'Docker', icon: 'simple-icons:docker', level: 'Basic' },
       { name: 'Azure Container Apps', icon: '/stacks/container-apps.svg', level: 'Basic' },
-      { name: 'Azure Batch', icon: 'simple-icons:microsoftazure', level: 'Basic' }, 
-      { name: 'Azure Container Instances (ACI)', icon: '/stacks/container-instances.svg', level: 'Basic'} ,
-      { name: 'Azure Container Registry', icon: '/stacks/container-registry.svg', level: 'Basic' } ]
+      { name: 'Azure Batch', icon: 'simple-icons:microsoftazure', level: 'Basic' },
+      {
+        name: 'Azure Container Instances (ACI)',
+        icon: '/stacks/container-instances.svg',
+        level: 'Basic',
+      },
+      { name: 'Azure Container Registry', icon: '/stacks/container-registry.svg', level: 'Basic' },
+    ],
   },
   {
     id: 'devops',
@@ -44,7 +53,7 @@ const techTabs = [
     technologies: [
       { name: 'GitHub Actions', icon: 'simple-icons:githubactions', level: 'Basic' },
       { name: 'GitLab CI', icon: 'simple-icons:gitlab', level: 'Basic' },
-    ]
+    ],
   },
   {
     id: 'databases',
@@ -56,7 +65,7 @@ const techTabs = [
       { name: 'Azure Table Storage', icon: 'simple-icons:microsoftazure', level: 'Basic' },
       { name: 'Supabase', icon: 'simple-icons:supabase', level: 'Intermediate' },
       { name: 'Toad Oracle', icon: 'simple-icons:oracle', level: 'Intermediate' },
-    ]
+    ],
   },
   {
     id: 'ide',
@@ -68,7 +77,7 @@ const techTabs = [
       { name: 'Android Studio', icon: 'simple-icons:androidstudio', level: 'Advanced' },
       { name: 'Atom', icon: 'simple-icons:atom', level: 'Intermediate' },
       { name: 'Cursor IDE', icon: 'simple-icons:cursor', level: 'Basic' },
-    ]
+    ],
   },
 ];
 ---
@@ -77,12 +86,18 @@ const techTabs = [
   <div class="container mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Section Header -->
     <div class="mb-12 text-center">
-      <img src="/stacks/stack-face.png" alt="Stack" class="mx-auto mb-6 h-auto w-24 sm:w-24" loading="lazy" />
-      <h2 class="mb-3 text-3xl font-semibold tracking-tight text-notion-text-primary sm:text-4xl">
+      <img
+        src="/stacks/stack-face.png"
+        alt="Stack"
+        class="mx-auto mb-6 h-auto w-24 sm:w-24"
+        loading="lazy"
+      />
+      <h2 class="text-notion-text-primary mb-3 text-3xl font-semibold tracking-tight sm:text-4xl">
         Technology Stack
       </h2>
-      <p class="text-notion-text-secondary max-w-2xl mx-auto">
-        I work with a focused set of tools and technologies that allow me to deliver modern, resilient and scalable solutions.
+      <p class="text-notion-text-secondary mx-auto max-w-2xl">
+        I work with a focused set of tools and technologies that allow me to deliver modern,
+        resilient and scalable solutions.
       </p>
     </div>
 
@@ -90,45 +105,49 @@ const techTabs = [
     <div class="mx-auto max-w-7xl">
       <!-- Tab Navigation -->
       <div class="mb-8 flex flex-wrap justify-center gap-2 border-b border-gray-200 pb-4">
-        {techTabs.map((tab, index) => (
-          <button
-            class="tech-tab rounded-lg px-4 py-2 text-sm font-medium transition-all sm:px-6 sm:text-base"
-            data-tab={tab.id}
-            data-active={index === 0 ? 'true' : 'false'}
-          >
-            {tab.name}
-          </button>
-        ))}
+        {
+          techTabs.map((tab, index) => (
+            <button
+              class="tech-tab rounded-lg px-4 py-2 text-sm font-medium transition-all sm:px-6 sm:text-base"
+              data-tab={tab.id}
+              data-active={index === 0 ? 'true' : 'false'}
+            >
+              {tab.name}
+            </button>
+          ))
+        }
       </div>
 
       <!-- Tab Content -->
-      {techTabs.map((tab, index) => (
-        <div
-          class="tab-content"
-          data-tab-content={tab.id}
-          style={index === 0 ? '' : 'display: none;'}
-        >
-          <div class="grid grid-cols-3 gap-3 sm:gap-4 md:grid-cols-4 lg:grid-cols-6">
-            {tab.technologies.map((tech) => (
-              <div class="tech-card group flex flex-col items-center justify-center gap-2 p-4 sm:p-5">
-                <div class="flex h-12 w-12 items-center justify-center sm:h-14 sm:w-14">
-                  {tech.icon.startsWith('/') || tech.icon.startsWith('./') ? (
-                    <img src={tech.icon} alt={tech.name} class="h-10 w-10 sm:h-12 sm:w-12" />
-                  ) : (
-                    <Icon name={tech.icon} class="h-10 w-10 sm:h-12 sm:w-12" />
-                  )}
+      {
+        techTabs.map((tab, index) => (
+          <div
+            class="tab-content"
+            data-tab-content={tab.id}
+            style={index === 0 ? '' : 'display: none;'}
+          >
+            <div class="grid grid-cols-3 gap-3 sm:gap-4 md:grid-cols-4 lg:grid-cols-6">
+              {tab.technologies.map((tech) => (
+                <div class="tech-card group flex flex-col items-center justify-center gap-2 p-4 sm:p-5">
+                  <div class="flex h-12 w-12 items-center justify-center sm:h-14 sm:w-14">
+                    {tech.icon.startsWith('/') || tech.icon.startsWith('./') ? (
+                      <img src={tech.icon} alt={tech.name} class="h-10 w-10 sm:h-12 sm:w-12" />
+                    ) : (
+                      <Icon name={tech.icon} class="h-10 w-10 sm:h-12 sm:w-12" />
+                    )}
+                  </div>
+                  <h3 class="text-center text-xs font-medium tracking-tight text-gray-900 sm:text-sm">
+                    {tech.name}
+                  </h3>
+                  <span class={`skill-level skill-level-${tech.level.toLowerCase()}`}>
+                    {tech.level}
+                  </span>
                 </div>
-                <h3 class="text-center text-xs font-medium tracking-tight text-gray-900 sm:text-sm">
-                  {tech.name}
-                </h3>
-                <span class={`skill-level skill-level-${tech.level.toLowerCase()}`}>
-                  {tech.level}
-                </span>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      ))}
+        ))
+      }
     </div>
   </div>
 </section>

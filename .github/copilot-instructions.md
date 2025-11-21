@@ -7,12 +7,14 @@ This is a production-ready multilingual portfolio website built with Astro 5, Ty
 ## Architecture & Structure
 
 ### Content Collections (Astro)
+
 - **Blog posts**: `src/content/blog/*.mdx` with schema: `title`, `description`, `publishDate`, `tags`, `image`, `draft`, `lang`
 - **Projects**: `src/content/projects/*.mdx` with schema: `title`, `description`, `category` (cloud|ai|fullstack|tools), `tags`, `projectUrl`, `githubUrl`, `featured`, `order`, `lang`
 - All content uses Astro's type-safe `getCollection()` API - never directly import MDX files
 - Dynamic routes use `getStaticPaths()` pattern (see `src/pages/blog/[slug].astro`, `src/pages/projects/[slug].astro`)
 
 ### i18n Implementation
+
 - **Config**: `astro.config.mjs` defines all 10 locales: `['en', 'de', 'fr', 'it', 'nl', 'ch', 'jp', 'es', 'pt', 'pt-br']` with `prefixDefaultLocale: false`
 - **Translations**: JSON files in `src/i18n/locales/` with nested dot notation keys (e.g., `"home.hero.title"`)
 - **Usage**: Import `useTranslations` from `@i18n/utils`, call `t('nav.home')` with dot-separated keys
@@ -20,12 +22,15 @@ This is a production-ready multilingual portfolio website built with Astro 5, Ty
 - **Locale codes**: en (English), de (Deutsch), fr (Français), it (Italiano), nl (Nederlands), ch (简体中文), jp (日本語), es (Español), pt (Português), pt-br (Português BR)
 
 ### Layout Hierarchy
+
 1. `BaseLayout.astro` - HTML shell with SEO meta tags, JSON-LD schema, hreflang links for all locales
 2. `MainLayout.astro` - Adds Header/Footer chrome, wraps with min-h-screen flex layout
 3. `BlogLayout.astro` - Specialized layout for blog posts with reading time
 
 ### TypeScript Path Aliases
+
 Use these consistently (defined in `tsconfig.json`):
+
 ```typescript
 @components/*  // src/components/*
 @layouts/*     // src/layouts/*
@@ -38,22 +43,26 @@ Use these consistently (defined in `tsconfig.json`):
 ## Development Patterns
 
 ### Adding New Content
+
 1. **Blog post**: Create `.mdx` in `src/content/blog/` with frontmatter matching schema (required: title, description, publishDate)
 2. **Project**: Create `.mdx` in `src/content/projects/` with frontmatter (required: title, description, category)
 3. Schema validation is automatic via Zod - respect `z.enum()` values exactly
 
 ### Component Structure
+
 - Page-specific components live in `src/pages/{page}/components/` (e.g., `home/components/HeroSection.astro`)
 - Shared components in `src/components/` organized by type (cards/, navigation/, ui/)
 - Astro components are default - only use React if interactivity requires it
 
 ### Styling
+
 - Tailwind CSS 4 via Vite plugin (`@tailwindcss/vite`)
 - Dark mode via class strategy: `dark:bg-black`, `dark:text-white`
 - Use semantic color patterns: `text-gray-600 dark:text-gray-400`
 - Responsive: `md:grid-cols-2 lg:grid-cols-3`
 
 ### MDX Configuration
+
 - Syntax highlighting: Shiki with `github-dark` theme
 - Rehype plugins: `rehype-slug`, `rehype-autolink-headings` (wrap behavior), `rehype-pretty-code`
 - Code blocks automatically get syntax highlighting - no special setup needed
@@ -61,6 +70,7 @@ Use these consistently (defined in `tsconfig.json`):
 ## Commands & Workflows
 
 ### Development
+
 ```bash
 npm run dev      # Starts dev server on localhost:3000
 npm run build    # Production build
@@ -71,6 +81,7 @@ npm run check    # Astro type checking
 ```
 
 ### ESLint Configuration
+
 - Uses flat config (`eslint.config.js`) - not `.eslintrc`
 - TypeScript files: Warns on unused vars (allow `_` prefix), warns on `any`
 - Astro files: Uses `eslint-plugin-astro` recommended config

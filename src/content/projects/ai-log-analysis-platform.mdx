@@ -70,7 +70,7 @@ async def classify_log_entry(log_entry: str) -> LogCategory:
             {"role": "user", "content": log_entry}
         ]
     )
-    
+
     category = parse_classification(response.choices[0].message.content)
     return category
 ```

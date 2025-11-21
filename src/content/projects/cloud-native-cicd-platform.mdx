@@ -69,7 +69,7 @@ spec:
 # Auto-scaling based on pipeline queue depth
 def scale_agents():
     queue_length = get_pipeline_queue_length()
-    
+
     if queue_length > 50:
         scale_to = min(queue_length // 10, 100)
         scale_agent_pool(scale_to)

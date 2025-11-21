@@ -13,9 +13,14 @@ const { title, description, href, image, tags = [], date } = Astro.props;
 // Function to get tag color based on tag name
 const getTagColor = (tag: string) => {
   const tagLower = tag.toLowerCase();
-  
+
   // Cloud/Infrastructure tags - Blue
-  if (tagLower.includes('cloud') || tagLower.includes('azure') || tagLower.includes('aws') || tagLower.includes('gcp')) {
+  if (
+    tagLower.includes('cloud') ||
+    tagLower.includes('azure') ||
+    tagLower.includes('aws') ||
+    tagLower.includes('gcp')
+  ) {
     return 'bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400';
   }
   // AI/ML tags - Purple
@@ -23,7 +28,12 @@ const getTagColor = (tag: string) => {
     return 'bg-purple-50 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400';
   }
   // DevOps/CI/CD tags - Green
-  if (tagLower.includes('devops') || tagLower.includes('ci/cd') || tagLower.includes('automation') || tagLower.includes('terraform')) {
+  if (
+    tagLower.includes('devops') ||
+    tagLower.includes('ci/cd') ||
+    tagLower.includes('automation') ||
+    tagLower.includes('terraform')
+  ) {
     return 'bg-green-50 text-green-600 dark:bg-green-900/30 dark:text-green-400';
   }
   // Security tags - Red
@@ -31,7 +41,11 @@ const getTagColor = (tag: string) => {
     return 'bg-red-50 text-red-600 dark:bg-red-900/30 dark:text-red-400';
   }
   // Architecture/Design tags - Orange
-  if (tagLower.includes('architecture') || tagLower.includes('design') || tagLower.includes('scalability')) {
+  if (
+    tagLower.includes('architecture') ||
+    tagLower.includes('design') ||
+    tagLower.includes('scalability')
+  ) {
     return 'bg-orange-50 text-orange-600 dark:bg-orange-900/30 dark:text-orange-400';
   }
   // Default - Gray
@@ -44,7 +58,7 @@ const getTagColor = (tag: string) => {
 >
   {
     image && (
-      <div class="mb-4 -mx-6 -mt-6 overflow-hidden rounded-t-md">
+      <div class="-mx-6 -mt-6 mb-4 overflow-hidden rounded-t-md">
         <img
           src={image}
           alt={title}
@@ -70,7 +84,11 @@ const getTagColor = (tag: string) => {
 
   <!-- Title -->
   <h3 class="mb-3 text-lg font-bold text-gray-900 dark:text-white">
-    <a href={href} class="after:absolute after:inset-0 hover:text-blue-600 dark:hover:text-blue-400 transition-colors" aria-label={title}>
+    <a
+      href={href}
+      class="transition-colors after:absolute after:inset-0 hover:text-blue-600 dark:hover:text-blue-400"
+      aria-label={title}
+    >
       {title}
     </a>
   </h3>
@@ -94,7 +112,12 @@ const getTagColor = (tag: string) => {
         <span class="inline-flex items-center gap-1 text-xs font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300">
           Read more
           <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 5l7 7-7 7"
+            />
           </svg>
         </span>
       </div>

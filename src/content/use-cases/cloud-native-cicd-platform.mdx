@@ -1,13 +1,14 @@
 ---
-title: "Cloud-Native CI/CD Platform"
-description: "Scalable continuous integration and deployment platform for microservices and Kubernetes environments"
-category: "cloud-native"
-problem: "Teams need modern CI/CD pipelines that scale across microservices, containers, and Kubernetes environments without managing infrastructure."
-solution: "Build cloud-native CI/CD platforms using containerization, Kubernetes orchestration, and automated deployment strategies."
-result: "Faster release cycles, improved reliability, and seamless scalability for containerized applications."
-technologies: ["Kubernetes", "Docker", "GitHub Actions", "Azure DevOps", "Helm", "ArgoCD", "Terraform"]
-relatedProjects: ["cloud-native-cicd-platform"]
-image: "/use-cases/cicd-platform.jpg"
+title: 'Cloud-Native CI/CD Platform'
+description: 'Scalable continuous integration and deployment platform for microservices and Kubernetes environments'
+category: 'cloud-native'
+problem: 'Teams need modern CI/CD pipelines that scale across microservices, containers, and Kubernetes environments without managing infrastructure.'
+solution: 'Build cloud-native CI/CD platforms using containerization, Kubernetes orchestration, and automated deployment strategies.'
+result: 'Faster release cycles, improved reliability, and seamless scalability for containerized applications.'
+technologies:
+  ['Kubernetes', 'Docker', 'GitHub Actions', 'Azure DevOps', 'Helm', 'ArgoCD', 'Terraform']
+relatedProjects: ['cloud-native-cicd-platform']
+image: '/use-cases/cicd-platform.jpg'
 order: 3
 ---
 
@@ -61,6 +62,7 @@ I designed and implemented a fully automated, GitOps-based CI/CD platform built 
 #### 2. **Core Components**
 
 **Build Pipeline (GitHub Actions)**
+
 ```yaml
 name: Build and Push
 
@@ -73,23 +75,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      
+
       - name: Build and test
         run: |
           docker build -t app:${{ github.sha }} .
           docker run app:${{ github.sha }} npm test
-      
+
       - name: Security scan
         uses: aquasecurity/trivy-action@master
         with:
           image-ref: app:${{ github.sha }}
-          
+
       - name: Push to ACR
         run: |
           az acr login --name myregistry
           docker tag app:${{ github.sha }} myregistry.azurecr.io/app:${{ github.sha }}
           docker push myregistry.azurecr.io/app:${{ github.sha }}
-          
+
       - name: Update manifest
         run: |
           cd k8s/overlays/production
@@ -99,19 +101,21 @@ jobs:
 ```
 
 **Deployment (GitOps with ArgoCD)**
+
 - Declarative Kubernetes manifests in Git
 - Automated sync from Git to cluster
 - Health checks and rollback automation
 - Multi-environment support (dev/staging/prod)
 
 **Infrastructure as Code**
+
 ```hcl
 module "aks_cluster" {
   source = "./modules/aks"
-  
+
   cluster_name        = "cicd-platform-aks"
   kubernetes_version  = "1.28"
-  
+
   node_pools = {
     system = {
       vm_size    = "Standard_D4s_v3"
@@ -131,11 +135,13 @@ module "aks_cluster" {
 ### 1. **Automated Build Pipeline**
 
 **Parallel Execution**
+
 - Multi-stage Docker builds with caching
 - Parallel test execution across multiple runners
 - Matrix builds for multiple platforms (amd64, arm64)
 
 **Quality Gates**
+
 - Unit tests (90% coverage requirement)
 - Integration tests
 - Security scanning (Trivy, Snyk)
@@ -145,6 +151,7 @@ module "aks_cluster" {
 ### 2. **GitOps Deployment**
 
 **Benefits:**
+
 - Git as single source of truth
 - Audit trail for all changes
 - Easy rollback (git revert)
@@ -152,6 +159,7 @@ module "aks_cluster" {
 - Drift detection and reconciliation
 
 **Deployment Strategies:**
+
 ```yaml
 # Blue-Green Deployment
 apiVersion: argoproj.io/v1alpha1
@@ -169,11 +177,13 @@ spec:
 ### 3. **Progressive Delivery**
 
 **Canary Deployments**
+
 - 10% → 25% → 50% → 100% traffic shifting
 - Automated rollback on error rate increase
 - Prometheus metrics-based promotion decisions
 
 **Feature Flags Integration**
+
 - LaunchDarkly for gradual feature rollout
 - A/B testing capabilities
 - Kill switches for instant disable
@@ -181,18 +191,21 @@ spec:
 ### 4. **Security Hardening**
 
 **Container Security**
+
 - Base image scanning and updates
 - Non-root containers
 - Read-only root filesystems
 - Network policies
 
 **Secrets Management**
+
 - Azure Key Vault integration
 - Sealed Secrets for Git
 - Dynamic secret injection
 - Automated rotation
 
 **Supply Chain Security**
+
 - SBOM (Software Bill of Materials) generation
 - Image signing with Cosign
 - Policy enforcement with OPA/Gatekeeper
@@ -200,12 +213,14 @@ spec:
 ### 5. **Observability**
 
 **Monitoring Stack**
+
 - Prometheus for metrics
 - Grafana for visualization
 - Loki for logs
 - Jaeger for distributed tracing
 
 **Custom Dashboards**
+
 - Deployment success rate
 - Build duration trends
 - Resource utilization
@@ -214,26 +229,31 @@ spec:
 ## Implementation Timeline
 
 ### Phase 1: Foundation (Week 1-2)
+
 - AKS cluster provisioning
 - Container registry setup
 - Base monitoring stack deployment
 
 ### Phase 2: CI Pipeline (Week 3-4)
+
 - GitHub Actions workflow creation
 - Docker build optimization
 - Security scanning integration
 
 ### Phase 3: GitOps Setup (Week 5-6)
+
 - ArgoCD installation and configuration
 - Kustomize/Helm chart creation
 - Multi-environment setup
 
 ### Phase 4: Advanced Features (Week 7-8)
+
 - Canary deployment implementation
 - Automated testing in staging
 - Production deployment automation
 
 ### Phase 5: Migration (Week 9-10)
+
 - Application migration to new platform
 - Team training and documentation
 - Runbook creation
@@ -241,24 +261,28 @@ spec:
 ## Results & Impact
 
 ### Deployment Velocity
+
 ✅ **10x faster** deployments: 45min → 4.5min  
 ✅ **50+ deployments/day** vs. 3-5 previously  
 ✅ **Zero-downtime** releases with blue-green/canary  
 ✅ **2-minute** rollback time
 
 ### Reliability & Quality
+
 ✅ **99.9% deployment** success rate  
 ✅ **95% reduction** in production incidents  
 ✅ **100% test coverage** requirement enforcement  
 ✅ **Automated rollback** preventing bad deployments
 
 ### Developer Productivity
+
 ✅ **80% reduction** in deployment-related tickets  
 ✅ **Self-service** deployments for all teams  
 ✅ **Instant feedback** on code quality and security  
 ✅ **4-hour** onboarding time for new developers
 
 ### Cost Efficiency
+
 ✅ **40% reduction** in CI/CD infrastructure costs  
 ✅ **Spot instances** for build nodes (70% savings)  
 ✅ **Auto-scaling** eliminating over-provisioning  
@@ -267,27 +291,32 @@ spec:
 ## Technologies & Tools
 
 **Container & Orchestration:**
+
 - Kubernetes (Azure AKS)
 - Docker
 - Helm, Kustomize
 
 **CI/CD:**
+
 - GitHub Actions
 - ArgoCD
 - Azure DevOps (legacy migration)
 
 **Security:**
+
 - Trivy (vulnerability scanning)
 - Cosign (image signing)
 - Sealed Secrets
 - Azure Key Vault
 
 **Observability:**
+
 - Prometheus + Grafana
 - Azure Monitor
 - Loki (logging)
 
 **Infrastructure:**
+
 - Terraform
 - Azure Container Registry
 
@@ -303,6 +332,7 @@ spec:
 ## Real-World Deployment Example
 
 **Before Platform:**
+
 ```
 1. Developer creates PR
 2. Manual code review (days)
@@ -316,6 +346,7 @@ Total: 2-5 days
 ```
 
 **With Cloud-Native CI/CD:**
+
 ```
 1. Developer creates PR
 2. Automated tests run (3 min)

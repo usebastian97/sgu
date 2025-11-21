@@ -23,11 +23,11 @@ export function useTranslations(lang: Language = 'en') {
     const keys = key.split('.');
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let value: any = translations[lang];
-    
+
     for (const k of keys) {
       value = value?.[k];
     }
-    
+
     return value || key;
   };
 }

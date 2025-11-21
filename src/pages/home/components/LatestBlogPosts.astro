@@ -15,7 +15,9 @@ const latestPosts = allPosts
   .slice(0, 3);
 ---
 
-<section class="relative overflow-hidden border-b border-gray-200 bg-gray-50 py-12 sm:py-16 lg:py-20">
+<section
+  class="relative overflow-hidden border-b border-gray-200 bg-gray-50 py-12 sm:py-16 lg:py-20"
+>
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="mb-12 text-center">
       <h2 class="mb-4 text-3xl font-bold sm:text-4xl">{t('home.latest_posts')}</h2>
@@ -40,9 +42,7 @@ const latestPosts = allPosts
     </div>
 
     <div class="mt-12 text-center">
-      <Button href="/blog" variant="secondary">
-        Read All Posts
-      </Button>
+      <Button href="/blog" variant="secondary"> Read All Posts </Button>
     </div>
   </div>
 </section>

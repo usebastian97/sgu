@@ -3,7 +3,7 @@
 
 const education = [
   {
-    title: 'Computer Science Master\'s Degree',
+    title: "Computer Science Master's Degree",
     institution: 'Politehnica University of Bucharest',
     period: 'Sept 2021 - Jun 2024',
     description:
@@ -24,13 +24,13 @@ const education = [
   <div class="space-y-8">
     {
       education.map((edu, index) => (
-        <div class="relative pl-8 before:absolute before:left-0 before:top-2 before:h-4 before:w-4 before:rounded-full before:bg-blue-600 before:ring-4 before:ring-blue-100">
+        <div class="relative pl-8 before:absolute before:top-2 before:left-0 before:h-4 before:w-4 before:rounded-full before:bg-blue-600 before:ring-4 before:ring-blue-100">
           {index !== education.length - 1 && (
-            <div class="absolute left-2 top-6 h-full w-0.5 bg-gray-200" />
+            <div class="absolute top-6 left-2 h-full w-0.5 bg-gray-200" />
           )}
           <div>
             <h3 class="text-xl font-bold">{edu.title}</h3>
-            <p class="mt-1 text-black-600">{edu.institution}</p>
+            <p class="text-black-600 mt-1">{edu.institution}</p>
             <p class="mt-1 text-sm text-gray-600">{edu.period}</p>
             <p class="mt-3 text-gray-600">{edu.description}</p>
           </div>

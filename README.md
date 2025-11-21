@@ -13,14 +13,14 @@ A modern, production-ready portfolio website built with Astro, TypeScript, and T
 
 ## 🧞 Commands
 
-| Command | Action |
-|---------|--------|
-| `npm install` | Install dependencies |
-| `npm run dev` | Start dev server at localhost:3000 |
-| `npm run build` | Build for production |
-| `npm run preview` | Preview build |
-| `npm run lint` | Lint code |
-| `npm run format` | Format code |
+| Command           | Action                             |
+| ----------------- | ---------------------------------- |
+| `npm install`     | Install dependencies               |
+| `npm run dev`     | Start dev server at localhost:3000 |
+| `npm run build`   | Build for production               |
+| `npm run preview` | Preview build                      |
+| `npm run lint`    | Lint code                          |
+| `npm run format`  | Format code                        |
 
 ## 📝 Content Management
 

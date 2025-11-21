@@ -28,7 +28,7 @@ const navItems = [
           navItems.map((item) => (
             <a
               href={item.href}
-              class="text-sm font-medium transition-colors hover:text-blue-600"
+              class="text-sm font-medium text-gray-900 transition-colors hover:font-semibold hover:text-black"
             >
               {item.label}
             </a>
@@ -39,17 +39,8 @@ const navItems = [
       <!-- Right Side Actions -->
       <div class="flex items-center gap-4">
         <!-- Mobile Menu Button -->
-        <button
-          id="mobile-menu-button"
-          class="md:hidden"
-          aria-label="Toggle menu"
-        >
-          <svg
-            class="h-6 w-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
+        <button id="mobile-menu-button" class="md:hidden" aria-label="Toggle menu">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path
               stroke-linecap="round"
               stroke-linejoin="round"
@@ -66,7 +57,7 @@ const navItems = [
         navItems.map((item) => (
           <a
             href={item.href}
-            class="block py-2 text-sm font-medium transition-colors hover:text-blue-600"
+            class="block py-2 text-sm font-medium text-gray-900 transition-colors hover:font-semibold hover:text-black"
           >
             {item.label}
           </a>

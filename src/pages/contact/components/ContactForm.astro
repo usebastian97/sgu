@@ -15,7 +15,7 @@ const t = useTranslations('en');
         id="name"
         name="name"
         required
-        class="w-full rounded-xl border-4 border-gray-200 bg-gray-50 px-4 py-3 text-gray-900 placeholder-gray-500 transition-colors focus:border-black focus:bg-white focus:outline-none focus:ring-1 focus:ring-black"
+        class="w-full rounded-xl border-4 border-gray-200 bg-gray-50 px-4 py-3 text-gray-900 placeholder-gray-500 transition-colors focus:border-black focus:bg-white focus:ring-1 focus:ring-black focus:outline-none"
         placeholder="John Doe"
       />
     </div>
@@ -29,7 +29,7 @@ const t = useTranslations('en');
         id="email"
         name="email"
         required
-        class="w-full rounded-xl border-4 border-gray-200 bg-gray-50 px-4 py-3 text-gray-900 placeholder-gray-500 transition-colors focus:border-black focus:bg-white focus:outline-none focus:ring-1 focus:ring-black"
+        class="w-full rounded-xl border-4 border-gray-200 bg-gray-50 px-4 py-3 text-gray-900 placeholder-gray-500 transition-colors focus:border-black focus:bg-white focus:ring-1 focus:ring-black focus:outline-none"
         placeholder="john@example.com"
       />
     </div>
@@ -43,14 +43,13 @@ const t = useTranslations('en');
         name="message"
         rows="6"
         required
-        class="w-full resize-none rounded-xl border-4 border-gray-200 bg-gray-50 px-4 py-3 text-gray-900 placeholder-gray-500 transition-colors focus:border-black focus:bg-white focus:outline-none focus:ring-1 focus:ring-black"
-        placeholder="How can I help you?"
-      ></textarea>
+        class="w-full resize-none rounded-xl border-4 border-gray-200 bg-gray-50 px-4 py-3 text-gray-900 placeholder-gray-500 transition-colors focus:border-black focus:bg-white focus:ring-1 focus:ring-black focus:outline-none"
+        placeholder="How can I help you?"></textarea>
     </div>
 
     <button
       type="submit"
-      class="btn-primary w-full rounded-xl px-6 py-3.5 text-base font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
+      class="btn-primary w-full rounded-xl px-6 py-3.5 text-base font-medium shadow-sm focus:ring-2 focus:ring-black focus:ring-offset-2 focus:outline-none"
     >
       {t('contact.send')}
     </button>
@@ -75,7 +74,7 @@ const t = useTranslations('en');
 
       // Show success message
       if (message) {
-        message.textContent = 'Message sent successfully! I\'ll get back to you soon.';
+        message.textContent = "Message sent successfully! I'll get back to you soon.";
         message.className = 'text-center text-green-600';
         message.classList.remove('hidden');
       }
