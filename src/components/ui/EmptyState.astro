@@ -1,0 +1,53 @@
+---
+interface Props {
+  icon?: string;
+  title: string;
+  description: string;
+  actionText?: string;
+  actionUrl?: string;
+}
+
+const { 
+  icon = "📭", 
+  title, 
+  description, 
+  actionText, 
+  actionUrl 
+} = Astro.props;
+---
+
+<div class="flex flex-col items-center justify-center py-16 px-4 text-center">
+  <div class="text-6xl mb-6 animate-bounce">
+    {icon}
+  </div>
+  
+  <h2 class="text-2xl md:text-3xl font-bold mb-4 text-gray-900 dark:text-white">
+    {title}
+  </h2>
+  
+  <p class="text-lg text-gray-600 dark:text-gray-400 max-w-md mb-8">
+    {description}
+  </p>
+  
+  {actionText && actionUrl && (
+    <a 
+      href={actionUrl}
+      class="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-200"
+    >
+      {actionText}
+      <svg 
+        class="w-5 h-5" 
+        fill="none" 
+        stroke="currentColor" 
+        viewBox="0 0 24 24"
+      >
+        <path 
+          stroke-linecap="round" 
+          stroke-linejoin="round" 
+          stroke-width="2" 
+          d="M13 7l5 5m0 0l-5 5m5-5H6"
+        />
+      </svg>
+    </a>
+  )}
+</div>

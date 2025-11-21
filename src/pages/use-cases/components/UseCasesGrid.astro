@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import { useTranslations } from '@i18n/utils';
+import EmptyState from '@components/ui/EmptyState.astro';
 
 const t = useTranslations('en');
 
@@ -11,7 +12,16 @@ const allUseCases = await getCollection('use-cases');
 const sortedUseCases = allUseCases.sort((a, b) => a.data.order - b.data.order);
 ---
 
-<div class="grid gap-8 md:grid-cols-1 lg:grid-cols-3">
+{sortedUseCases.length === 0 ? (
+  <EmptyState
+    icon="💼"
+    title="No use cases yet"
+    description="We're working on documenting real-world use cases and success stories. Come back soon!"
+    actionText="Explore Projects"
+    actionUrl="/projects"
+  />
+) : (
+  <div class="grid gap-8 md:grid-cols-1 lg:grid-cols-3">
   {sortedUseCases.map((useCase) => (
     <div class="usecase-card group flex flex-col rounded-lg border border-gray-200 bg-white p-6 sm:p-8 transition-all duration-200 hover:border-gray-900 hover:shadow-lg">
       <!-- Category Badge -->
@@ -30,36 +40,6 @@ const sortedUseCases = allUseCases.sort((a, b) => a.data.order - b.data.order);
       <p class="mb-6 text-sm text-gray-600 leading-relaxed">
         {useCase.data.description}
       </p>
-
-      <!-- Problem -->
-      <div class="mb-6 pb-6 border-b border-gray-200">
-        <h4 class="mb-2 text-xs font-semibold uppercase tracking-widest text-gray-500">
-          {t('usecases.problem')}
-        </h4>
-        <p class="text-sm text-gray-700 leading-relaxed">
-          {useCase.data.problem}
-        </p>
-      </div>
-
-      <!-- Solution -->
-      <div class="mb-6 pb-6 border-b border-gray-200">
-        <h4 class="mb-2 text-xs font-semibold uppercase tracking-widest text-gray-500">
-          {t('usecases.solution')}
-        </h4>
-        <p class="text-sm text-gray-700 leading-relaxed">
-          {useCase.data.solution}
-        </p>
-      </div>
-
-      <!-- Result -->
-      <div class="mb-6">
-        <h4 class="mb-2 text-xs font-semibold uppercase tracking-widest text-gray-500">
-          {t('usecases.result')}
-        </h4>
-        <p class="text-sm text-gray-700 leading-relaxed">
-          {useCase.data.result}
-        </p>
-      </div>
 
       <!-- Technologies -->
       {useCase.data.technologies.length > 0 && (
@@ -96,11 +76,6 @@ const sortedUseCases = allUseCases.sort((a, b) => a.data.order - b.data.order);
       </div>
     </div>
   ))}
-</div>
-
-{sortedUseCases.length === 0 && (
-  <div class="col-span-full py-12 text-center">
-    <p class="text-gray-600">{t('usecases.noUseCases')}</p>
   </div>
 )}
 

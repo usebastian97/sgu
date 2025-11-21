@@ -1,5 +1,6 @@
 ---
 import Card from '@components/cards/Card.astro';
+import EmptyState from '@components/ui/EmptyState.astro';
 import { getCollection } from 'astro:content';
 
 const allProjects = await getCollection('projects');
@@ -7,18 +8,28 @@ const allProjects = await getCollection('projects');
 const projects = allProjects.sort((a, b) => a.data.order - b.data.order);
 ---
 
-<div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3" id="projects-grid">
-  {
-    projects.map((project) => (
-      <div class="project-card" data-category={project.data.category}>
-        <Card
-          title={project.data.title}
-          description={project.data.description}
-          href={`/projects/${project.slug}`}
-          image={project.data.image ?? ''}
-          tags={project.data.tags}
-        />
-      </div>
-    ))
-  }
-</div>
+{projects.length === 0 ? (
+  <EmptyState
+    icon="🚀"
+    title="No projects yet"
+    description="We're building something awesome! Stay tuned for exciting projects coming soon."
+    actionText="View Blog"
+    actionUrl="/blog"
+  />
+) : (
+  <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3" id="projects-grid">
+    {
+      projects.map((project) => (
+        <div class="project-card" data-category={project.data.category}>
+          <Card
+            title={project.data.title}
+            description={project.data.description}
+            href={`/projects/${project.slug}`}
+            image={project.data.image ?? ''}
+            tags={project.data.tags}
+          />
+        </div>
+      ))
+    }
+  </div>
+)}
